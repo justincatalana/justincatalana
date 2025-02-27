@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
   before_action :set_picture, only: %i[ show edit update destroy ]
 
   # GET /pictures or /pictures.json

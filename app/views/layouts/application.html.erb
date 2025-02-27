@@ -19,6 +19,26 @@
   </head>
 
   <body class="bg-gray-50">
+    <% if authenticated? %>
+      <div class="flex items-center space-x-4 float-right">
+        <!-- Dropdown Navigation -->
+        <div class="relative group">
+          <button class="inline-flex items-center px-3 py-2 border border-gray-300 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md focus:outline-none">
+            <span>⚙️</span>
+          </button>
+          <!-- Dropdown Menu aligned to the right of the button -->
+          <div class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+            <div class="py-1">
+              <%= link_to "View Settings", "/settings", class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <%= link_to "Add Picture", "/picture/new", class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <%= link_to "Add Post", "/post/new", class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+              <%= button_to "Log out", session_path, method: :delete, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+            </div>
+          </div>
+        </div>
+        <!-- Logout Button -->
+      </div>
+    <% end %>
     <main class="container mx-auto px-5 py-10">
       <div class="max-w-3xl mx-auto shadow-lg rounded-lg overflow-hidden bg-white">
         <!-- Hero Banner -->
@@ -27,7 +47,7 @@
         <!-- Profile Section -->
         <div class="px-6 pb-0 pt-14 -mt-16">
           <div class="flex items-center">
-            <img class="h-32 w-32 rounded-full border-4 border-white object-cover" src="<%= @setting&.profile_image&.attached? ? url_for(@setting.profile_image) : nil %>" alt="Profile Picture">
+            <img class="h-42 w-42 rounded-full border-4 border-white object-cover" src="<%= @setting&.profile_image&.attached? ? url_for(@setting.profile_image) : nil %>" alt="Profile Picture">
             <div class="ml-4">
               <h2 class="text-2xl font-semibold text-gray-800">Justin Catalana</h2>
               <!-- Navigation Links -->
