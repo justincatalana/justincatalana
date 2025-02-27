@@ -1,0 +1,17 @@
+<% content_for :title, "Pictures" %>
+
+<div class="max-w-3xl mx-auto mt-10">
+  <div class="grid grid-cols-3 gap-1">
+    <% @pictures.each do |picture| %>
+      <div class="aspect-square overflow-hidden bg-gray-100">
+        <% if picture.image.attached? %>
+          <%= link_to picture do %>
+            <%= image_tag url_for(picture.image), class: "object-cover h-full w-full" %>
+          <% end %>
+        <% else %>
+          <span>No image</span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

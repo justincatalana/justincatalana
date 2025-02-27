@@ -1,0 +1,7 @@
+<div id="<%= dom_id picture %>" class="my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%=image_tag (picture.image) if picture.image.attached? %>
+    <%= picture.description %>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div id="<%= dom_id setting %>" class="my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Profile image:</strong>
+    <%=image_tag (setting.profile_image) if setting.profile_image.attached? %>
+    <strong class="block font-medium mb-1">Banner image:</strong>
+    <%=image_tag (setting.banner_image) if setting.banner_image.attached? %>
+    <strong class="block font-medium mb-1">About text:</strong>
+    <%= setting.about_text %>
+  </div>
+</div>

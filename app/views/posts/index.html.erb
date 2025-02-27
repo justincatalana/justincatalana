@@ -1,0 +1,20 @@
+<% content_for :title, "Posts" %>
+
+<div class="px-6 py-4">
+  <div id="posts" class="space-y-6">
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <div class="p-5 overflow-hidden">
+          <h2 class="text-xl font-semibold mb-2">
+            <%= link_to post.title, post, class: "text-indigo-600 hover:underline" %>
+          </h2>
+          <div class="prose max-h-32 overflow-hidden relative">
+            <%= post.description %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-center my-10">No posts found.</p>
+    <% end %>
+  </div>
+</div>

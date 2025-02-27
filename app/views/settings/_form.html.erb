@@ -1,0 +1,32 @@
+<%= form_with(model: setting, class: "contents") do |form| %>
+  <% if setting.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% setting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="my-5">
+    <%=form.label :profile_image, style: "display: block" %>
+    <%= form.file_field :profile_image %>
+  </div>
+
+  <div class="my-5">
+    <%=form.label :banner_image, style: "display: block" %>
+    <%= form.file_field :banner_image %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :about_text %>
+    <%= form.rich_textarea :about_text, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": setting.errors[:about_text].none?, "border-red-400 focus:outline-red-600": setting.errors[:about_text].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

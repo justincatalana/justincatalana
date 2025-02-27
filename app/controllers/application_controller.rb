@@ -1,4 +1,12 @@
 class ApplicationController < ActionController::Base
-  # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
+  before_action :set_profile_and_banner_images
+
+  private
+
+  def set_profile_and_banner_images
+    @setting = Rails.cache.fetch("site_setting") do
+      Setting.first
+    end
+  end
 end
