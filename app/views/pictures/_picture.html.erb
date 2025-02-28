@@ -1,7 +1,13 @@
 <div id="<%= dom_id picture %>" class="my-5 space-y-5">
   <div>
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%=image_tag (picture.image) if picture.image.attached? %>
+    <% if picture.image.attached? %>
+      <% if picture.image.content_type.start_with?('video') %>
+        <%= video_tag url_for(picture.image), controls: true, class: "w-full" %>
+      <% else %>
+        <%= image_tag url_for(picture.image), class: "w-full" %>
+      <% end %>
+    <% end %>
+    </br >
     <%= picture.description %>
   </div>
 </div>

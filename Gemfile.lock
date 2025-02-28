@@ -393,6 +393,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  dotenv
   faker (~> 3.5)
   image_processing (~> 1.2)
   importmap-rails
